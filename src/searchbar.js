@@ -1,21 +1,31 @@
+import { useState, useEffect } from 'react';
+import './Searchbar.css';
 
+function Searchbar({ setQuery }) {
+    const [input, changeInput] = useState("");
+    const [key, getPressed] = useState("");
 
-import React from 'react';
+    const handleInputChange = (event) => {
+        changeInput(event.target.value);
+    };
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        if (input.trim()) {
+            setQuery(input);
+        }
+    };
 
     return (
-
         <>
-        
-        <div class="topnav">
-            <a class="active" href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <input type="text" placeholder="Search.."></input>
-        </div> 
-    
+            <form className="topnav" onSubmit={onSubmit}> 
+                <a className="active" href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <input type="text" placeholder="Search.." onChange={handleInputChange}></input>
+            </form>
         </>
-    )
-
+    );
+}
 
 export default Searchbar;
-
