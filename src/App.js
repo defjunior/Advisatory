@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import './App.css';
-
 function App() {
   const [redditResult, setRedditResult] = useState('loading...');
   const [youtubeResult, setYoutubeResult] = useState('loading...');
@@ -60,6 +59,7 @@ function App() {
 
   return (
     <>
+      
       <div className = "main">
         <h1>results from youtube and reddit, for: {query}</h1>
         <h2>Reddit: {redditResult}</h2>
