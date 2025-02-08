@@ -8,7 +8,7 @@ function Searchbar() {
     return (
 
         <>
-    
+        
         <div class="topnav">
             <a class="active" href="#home">Home</a>
             <a href="#about">About</a>
