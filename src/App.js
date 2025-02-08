@@ -6,6 +6,7 @@ function App() {
   const [redditResult, setRedditResult] = useState('loading...');
   const [youtubeResult, setYoutubeResult] = useState('loading...');
   const query = 'how to deal with a long day at work'; // query to search
+  
 
   async function fetchRedditTopResult(query) { 
     // async means can run w/o stopping other code (kinda like coroutine i think)
