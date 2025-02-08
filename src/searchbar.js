@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import './searchbar.css';
+import './Searchbar.css';
 
-function searchbar() {
+function Searchbar() {
 
 
 
@@ -19,4 +19,4 @@ function searchbar() {
         </>
     )
 }
-export default searchbar
+export default Searchbar
