@@ -25,3 +25,6 @@ function Home({ query, setQuery, redditResult, youtubeResult, loading, error }) 
 export default Home;
 
 
+}
+
+export default Home
