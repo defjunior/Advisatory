@@ -3,9 +3,11 @@ import Searchbar from "./Searchbar";
 import { useState, useEffect } from 'react';
 
 function Home() {
+    
     const [redditResult, setRedditResult] = useState('loading...');
     const [youtubeResult, setYoutubeResult] = useState('loading...');
-    const query = 'how to deal with a long day at work'; // query to search
+    const [query, setQuery] = useState("how to deal with a long day at work");
+
     
   
     async function fetchRedditTopResult(query) { 
@@ -60,7 +62,7 @@ function Home() {
   
   return (
     <>
-      <Searchbar />
+      <Searchbar setQuery ={setQuery} />
     <div className = "main">
       <h1>results from youtube and reddit, for: {query}</h1>
       <h2>Reddit: {redditResult}</h2>
