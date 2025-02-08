@@ -51,30 +51,39 @@ function Home() {
     };
 
     return (
-        <>
-            <Searchbar setQuery={setQuery} />
-            <div className="main">
-                <h1>Results from YouTube and Reddit for: {query}</h1>
-                
-                <select value={selectedResult} onChange={handleSelectChange}>
-                    <option value="">Select a platform</option>
-                    <option value="Reddit">Reddit</option>
-                    <option value="YouTube">YouTube</option>
-                </select>
+      <>
+        <Searchbar setQuery={setQuery} />
+        <div className="main">
+          <h1>Results from YouTube and Reddit for: {query}</h1>
+          
+          <div className="icon-select">
+            <img
+              src="reddit-icon.png"
+              alt="Reddit"
+              className={`icon ${selectedResult === "Reddit" ? "selected" : ""}`}
+              onClick={() => setSelectedResult("Reddit")}
+            />
+            <img
+              src="youtube-icon.png"
+              alt="YouTube"
+              className={`icon ${selectedResult === "YouTube" ? "selected" : ""}`}
+              onClick={() => setSelectedResult("YouTube")}
+            />
+          </div>
 
-                <div>
-                    {selectedResult && (
-                        <h2>{selectedResult} Results:</h2>
-                    )}
+          <div>
+            {selectedResult && (
+              <h2>{selectedResult} Results:</h2>
+            )}
 
-                    <ul>
-                        {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
-                            <li key={index}>{result}</li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-        </>
+            <ul>
+              {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
+                <li key={index}>{result}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </>
     );
 }
 
