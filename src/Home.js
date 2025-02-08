@@ -52,37 +52,39 @@ function Home() {
 
     return (
       <>
-        <Searchbar setQuery={setQuery} />
-        <div className="main">
-          <h1>Results from YouTube and Reddit for: {query}</h1>
-          
-          <div className="icon-select">
-            <img
-              src= {`${process.env.PUBLIC_URL}/redditicon.png`}
-              alt="Reddit"
-              className="imagebutton"
-              onClick={() => setSelectedResult("Reddit")}
-            />
-            <img
-              src="youtube-icon.png"
-              alt="YouTube"
-              className={`icon ${selectedResult === "YouTube" ? "selected" : ""}`}
-              onClick={() => setSelectedResult("YouTube")}
-            />
-          </div>
-
-          <div>
-            {selectedResult && (
-              <h2>{selectedResult} Results:</h2>
-            )}
-
-            <ul>
-              {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
-                <li key={index}>{result}</li>
-              ))}
-            </ul>
-          </div>
+      <Searchbar setQuery={setQuery} />
+      <div className="main">
+        <h1>Results from YouTube and Reddit for: {query}</h1>
+        
+        <div className="icon-select">
+        <img
+          src= {`${process.env.PUBLIC_URL}/redditicon.png`}
+          alt="Reddit"
+          className={`${process.env.PUBLIC_URL}/redditicon.png`}
+          onClick={() => setSelectedResult("Reddit")}
+          style={{ width: '100px', height: '100px' }} // Added inline styles for resizing
+        />
+        <img
+          src="youtube-icon.png"
+          alt="YouTube"
+          className={`icon ${selectedResult === "YouTube" ? "selected" : ""}`}
+          onClick={() => setSelectedResult("YouTube")}
+          style={{ width: '50px', height: '50px' }} // Added inline styles for resizing
+        />
         </div>
+
+        <div>
+        {selectedResult && (
+          <h2>{selectedResult} Results:</h2>
+        )}
+
+        <ul>
+          {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
+          <li key={index}>{result}</li>
+          ))}
+        </ul>
+        </div>
+      </div>
       </>
     );
 }
