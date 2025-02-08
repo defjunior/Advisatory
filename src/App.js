@@ -59,7 +59,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className = "main">
         <h1>results from youtube and reddit, for: {query}</h1>
         <h2>Reddit: {redditResult}</h2>
         <h2>YouTube: {youtubeResult}</h2>
