@@ -58,9 +58,9 @@ function Home() {
           
           <div className="icon-select">
             <img
-              src="reddit-icon.png"
+              src= {`${process.env.PUBLIC_URL}/redditicon.png`}
               alt="Reddit"
-              className={`icon ${selectedResult === "Reddit" ? "selected" : ""}`}
+              className="imagebutton"
               onClick={() => setSelectedResult("Reddit")}
             />
             <img
