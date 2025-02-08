@@ -20,7 +20,7 @@ function Home() {
     }
 
     async function fetchYouTubeTopResult(query) {
-        const apiKey = 'YOUR_YOUTUBE_API_KEY'; // Replace with your actual API key
+        const apiKey = 'AIzaSyBzTP6xG7xc2JeTRwuh_VeFbux8BDwCc1A'; // Replace with your actual API key
         const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=1&key=${apiKey}`;
 
         try {

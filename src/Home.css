@@ -16,3 +16,8 @@
     touch-action: manipulation;
     border-radius: 5%;
   }
+  
+.thumbnail {
+    height: auto;
+    width: 100%
+}
