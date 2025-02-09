@@ -95,7 +95,7 @@ function App() {
     <HashRouter>
           <Routes>
             <Route path="" element={<Home />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="home" element={<Home />} />
           </Routes>
         </HashRouter>
 
