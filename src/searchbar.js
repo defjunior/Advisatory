@@ -20,7 +20,7 @@ function Searchbar({ setQuery }) {
         <>
             <form className="topnav" onSubmit={onSubmit}> 
                 <a className="active" href="#home">Home</a>
-                
+                <a className="active" href="#about">About</a>
                 <input type="text" placeholder="Search.." onChange={handleInputChange}></input>
             </form>
         </>

@@ -8,7 +8,7 @@ function About() {
       <Searchbar />
       <div className="main">
         <div className="title">
-          <h1>About</h1>
+          <h1>Reddit results</h1>
         </div>
         <div className="phone-image" style={{ display: 'flex', justifyContent: 'center', maxWidth: '100%' }}>
           <img src={`${process.env.PUBLIC_URL}/phone.png`} 
