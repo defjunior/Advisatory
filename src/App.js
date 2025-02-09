@@ -3,6 +3,7 @@ import './App.css';
 import Home from './Home';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import About from './About';
+import Youtube from './Youtube';
 function App() {
   const [query, setQuery] = useState(""); // The search term entered by the user
   const [redditResult, setRedditResult] = useState(''); // Summary from Reddit
@@ -98,6 +99,7 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="home" element={<Home />} />
             <Route path="about" element={<About />} />
+            <Route path="Youtube" element={<Youtube/>} />
           </Routes>
         </HashRouter>
 

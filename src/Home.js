@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Searchbar from "./Searchbar";
 import "./Home.css";
 
@@ -21,13 +21,8 @@ function Home() {
   }
 
   async function fetchYouTubeTopResults(query) {
-<<<<<<< HEAD
-    const apiKey = 'AIzaSyC6xqAHYO7aUuvTUNjc2KLAHOcUseth9cY';
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=5&type=video&videoDuration=medium&safeSearch=strict&key=${apiKey}`;
-=======
     const apiKey = 'AIzaSyCpxYDDwtfCsvRTmcrj9ahhdwhVK7bwYR8';
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=5&type=video&safeSearch=strict&key=${apiKey}`;
->>>>>>> 241ffd2c900eebd4fd0001eb74b77755293258c0
 
     try {
       const response = await fetch(url);
@@ -51,19 +46,12 @@ function Home() {
 
   function fetchTranscript(query) {
     try {
-<<<<<<< HEAD
-      const response = fetch(`/api/transcript/${encodeURIComponent(query)}`);
-      const data = response.json();
-      console.log(data.summary);
-      return data.summary;
-=======
       // Encode the query to safely include it in the URL.
       const response =  fetch(`/api/transcript/${encodeURIComponent(query)}`);
       const data =  response;
       console.log(data.summary); 
       // This contains the summary generated from the transcript.
       setSummary(data.summary);
->>>>>>> 241ffd2c900eebd4fd0001eb74b77755293258c0
     } catch (error) {
       console.error("Error fetching transcript:", error);
       return null;
@@ -72,6 +60,10 @@ function Home() {
 
   function redirectToAbout() {
     window.location.href = "/#about";
+    }
+  
+    function redirectToYoutube() {
+      window.location.href = "/#Youtube";
   }
   return (
     <>
@@ -102,6 +94,7 @@ function Home() {
             src={`${process.env.PUBLIC_URL}/youtubeicon.png`}
             alt="YouTube"
             className="youtube-icon"
+            onClick={redirectToYoutube}
             onMouseOver={() => handleIconHover("YouTube")}
             style={{ width: '100px', height: '100px', cursor: 'pointer', transition: 'transform 0.2s' }}
             onMouseEnter={(e) => {
@@ -119,20 +112,6 @@ function Home() {
             <h2 className="title">{selectedResult} Results:</h2>
           )}
 
-<<<<<<< HEAD
-          <ul>
-            {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
-              <li key={index}>{result}</li>
-            ))}
-
-            <div>
-              <h2 className="title">Transcript Summary:</h2>
-              <p>{fetchTranscript(query)}</p>
-            </div>
-          </ul>
-        </div>
-      </div>
-=======
     <ul>
     {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
     <li key={index}>{result}</li>
@@ -153,7 +132,6 @@ function Home() {
     </ul>
     </div>
     </div>
->>>>>>> 241ffd2c900eebd4fd0001eb74b77755293258c0
     </>
   );
 }
