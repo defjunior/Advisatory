@@ -31,8 +31,7 @@ function Home() {
     } catch (error) {
       return ["Error fetching YouTube data"];
     }
-  }
-
+}
   const handleIconHover = async (platform) => {
     setSelectedResult(platform);
     if (platform === "Reddit") {
@@ -56,6 +55,9 @@ function Home() {
     }
   }
 
+  function redirectToAbout() {
+    window.location.href = "/#about";
+  }
   return (
     <>
       <Searchbar setQuery={setQuery} />
@@ -69,6 +71,7 @@ function Home() {
             src={`${process.env.PUBLIC_URL}/redditicon.png`}
             alt="Reddit"
             className="reddit-icon"
+            onClick={redirectToAbout}
             onMouseOver={() => handleIconHover("Reddit")}
             style={{ width: '100px', height: '100px', cursor: 'pointer', transition: 'transform 0.2s' }}
             onMouseEnter={(e) => {
@@ -95,9 +98,8 @@ function Home() {
               e.currentTarget.style.transform = 'scale(1)';
             }}
           />
-        </div>
-
-        <div>
+  </div>
+  <div>
           {selectedResult && (
             <h2 className="title">{selectedResult} Results:</h2>
           )}
