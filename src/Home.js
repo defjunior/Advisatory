@@ -43,11 +43,11 @@ function Home() {
     }
   };
 
-  async function fetchTranscript(query) {
+ function fetchTranscript(query) {
     try {
       // Encode the query to safely include it in the URL.
-      const response = await fetch(`/api/transcript/${encodeURIComponent(query)}`);
-      const data = await response.json();
+      const response =  fetch(`/api/transcript/${encodeURIComponent(query)}`);
+      const data =  response.json();
       console.log(data.summary); // This contains the summary generated from the transcript.
       return data.summary;
     } catch (error) {
