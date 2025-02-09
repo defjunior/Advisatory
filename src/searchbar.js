@@ -21,7 +21,6 @@ function Searchbar({ setQuery }) {
             <form className="topnav" onSubmit={onSubmit}> 
                 <a className="active" href="#home">Home</a>
                 <a href="#about">About</a>
-                <a href="#contact">Contact</a>
                 <input type="text" placeholder="Search.." onChange={handleInputChange}></input>
             </form>
         </>

@@ -43,6 +43,19 @@ function Home() {
     }
   };
 
+  async function fetchTranscript(query) {
+    try {
+      // Encode the query to safely include it in the URL.
+      const response = await fetch(`/api/transcript/${encodeURIComponent(query)}`);
+      const data = await response.json();
+      console.log(data.summary); // This contains the summary generated from the transcript.
+      return data.summary;
+    } catch (error) {
+      console.error("Error fetching transcript:", error);
+      return null;
+    }
+  }
+
   return (
     <>
     <Searchbar setQuery={setQuery} />
@@ -93,6 +106,10 @@ function Home() {
     {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
     <li key={index}>{result}</li>
     ))}
+
+    <div>
+
+    </div>
     </ul>
     </div>
     </div>

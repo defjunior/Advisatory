@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Home from './Home';
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import About from './About';
 function App() {
   const [query, setQuery] = useState(""); // The search term entered by the user
   const [redditResult, setRedditResult] = useState(''); // Summary from Reddit
@@ -96,6 +97,7 @@ function App() {
           <Routes>
             <Route path="" element={<Home />} />
             <Route path="home" element={<Home />} />
+            <Route path="about" element={<About />} />
           </Routes>
         </HashRouter>
 
