@@ -21,7 +21,7 @@ function Home() {
 
     async function fetchYouTubeTopResults(query) {
         const apiKey = 'AIzaSyArpkYy0rdZYLGp95ZjEY1BjGVoknoKi8I'; // Replace with your actual API key
-        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=5&key=${apiKey}`; // Increased maxResults to 5
+        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=5&safeSearch=strict&key=${apiKey}`; // Increased maxResults to 5 and added safeSearch parameter
 
         try {
             const response = await fetch(url);
