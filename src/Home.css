@@ -21,4 +21,17 @@
     height: auto;
     width: 100%
 }
+.icon-select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+
+.icon{ 
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    
+}

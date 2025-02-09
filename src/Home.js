@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Searchbar from "./Searchbar";
-
+import "./Home.css";
 function Home() {
     const [redditResults, setRedditResults] = useState([]);  // Changed to store an array of results
     const [youtubeResults, setYoutubeResults] = useState([]);  // Changed to store an array of results
@@ -54,34 +54,50 @@ function Home() {
       <>
       <Searchbar setQuery={setQuery} />
       <div className="main">
-      <h1>Results from YouTube and Reddit for: {query}</h1>
+      <h1>Results for: {query}</h1>
       
-      <div className="icon-select">
+      <div className="icon-select" style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
       <img
-        src= {`${process.env.PUBLIC_URL}/redditicon.png`}
-        alt="Reddit"
-        className="reddit-icon"
-        onClick={() => setSelectedResult("Reddit")}
-        style={{ width: '100px', height: '100px' }} // Added inline styles for resizing
+      src= {`${process.env.PUBLIC_URL}/redditicon.png`}
+      alt="Reddit"
+      className="reddit-icon"
+      onClick={() => setSelectedResult("Reddit")}
+      style={{ width: '100px', height: '100px', cursor: 'pointer', transition: 'transform 0.2s' }} // Added inline styles for resizing, cursor pointer, and transition
+      onMouseOver={(e) => {
+      e.currentTarget.style.opacity = 0.7;
+      e.currentTarget.style.transform = 'scale(1.1)';
+      }}
+      onMouseOut={(e) => {
+      e.currentTarget.style.opacity = 1;
+      e.currentTarget.style.transform = 'scale(1)';
+      }}
       />
       <img
-        src={`${process.env.PUBLIC_URL}/youtubeicon.png`}
-        alt="YouTube"
-        className="youtube-icon"
-        onClick={() => setSelectedResult("YouTube")}
-        style={{ width: '100px', height: '100px' }} // Added inline styles for resizing
+      src={`${process.env.PUBLIC_URL}/youtubeicon.png`}
+      alt="YouTube"
+      className="youtube-icon"
+      onClick={() => setSelectedResult("YouTube")}
+      style={{ width: '100px', height: '100px', cursor: 'pointer', transition: 'transform 0.2s' }} // Added inline styles for resizing, cursor pointer, and transition
+      onMouseOver={(e) => {
+      e.currentTarget.style.opacity = 0.7;
+      e.currentTarget.style.transform = 'scale(1.1)';
+      }}
+      onMouseOut={(e) => {
+      e.currentTarget.style.opacity = 1;
+      e.currentTarget.style.transform = 'scale(1)';
+      }}
       />
       </div>
 
       <div>
       {selectedResult && (
-        <h2>{selectedResult} Results:</h2>
+      <h2>{selectedResult} Results:</h2>
       )}
 
       <ul>
-        {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
-        <li key={index}>{result}</li>
-        ))}
+      {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
+      <li key={index}>{result}</li>
+      ))}
       </ul>
       </div>
       </div>
