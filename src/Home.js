@@ -108,7 +108,8 @@ function Home() {
     ))}
 
     <div>
-
+      <h2 className="title">Transcript Summary:</h2>
+      <p>{fetchTranscript(query)}</p>
     </div>
     </ul>
     </div>
