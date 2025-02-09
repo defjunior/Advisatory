@@ -21,7 +21,7 @@ function Home() {
 
     async function fetchYouTubeTopResults(query) {
         const apiKey = 'AIzaSyArpkYy0rdZYLGp95ZjEY1BjGVoknoKi8I'; // Replace with your actual API key
-        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=5&type=video&videoDuration=long&safeSearch=strict&key=${apiKey}`; // Increased maxResults to 5, added type=video and videoDuration=long to filter for long videos and non-YouTube shorts
+        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=5&type=video&videoDuration=medium&safeSearch=strict&key=${apiKey}`; // Increased maxResults to 5, added type=video and videoDuration=long to filter for long videos and non-YouTube shorts
 
         try {
             const response = await fetch(url);
