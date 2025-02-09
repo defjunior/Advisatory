@@ -54,7 +54,10 @@ function Home() {
       <>
       <Searchbar setQuery={setQuery} />
       <div className="main">
-      <h1>Results for: {query}</h1>
+        <div className="title">
+             <h1>Results for: {query}</h1>
+        </div>
+      
       
       <div className="icon-select" style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
       <img
@@ -91,7 +94,7 @@ function Home() {
 
       <div>
       {selectedResult && (
-      <h2>{selectedResult} Results:</h2>
+      <h2 className="title">{selectedResult} Results:</h2>
       )}
 
       <ul>
