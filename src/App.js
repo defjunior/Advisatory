@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Home from './Home';
-
+import { HashRouter, Routes, Route } from 'react-router-dom';
 function App() {
   const [query, setQuery] = useState(""); // The search term entered by the user
   const [redditResult, setRedditResult] = useState(''); // Summary from Reddit
@@ -91,16 +91,15 @@ function App() {
   // The App component renders the Home component, passing along
   // the current query, the function to update it, and the results.
   return (
-    <div className="main">
-      <Home 
-        query={query} 
-        setQuery={setQuery} 
-        redditResult={redditResult} 
-        youtubeResult={youtubeResult} 
-        loading={loading}
-        error={error}
-      />
-    </div>
+
+    <HashRouter>
+          <Routes>
+            <Route path="" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+          </Routes>
+        </HashRouter>
+
+    
   );
 }
 
