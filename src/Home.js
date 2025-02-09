@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Searchbar from "./Searchbar";
 import "./Home.css";
+
 function Home() {
   const [redditResults, setRedditResults] = useState([]);
   const [youtubeResults, setYoutubeResults] = useState([]);
@@ -20,7 +21,7 @@ function Home() {
   }
 
   async function fetchYouTubeTopResults(query) {
-    const apiKey = 'AIzaSyArpkYy0rdZYLGp95ZjEY1BjGVoknoKi8I';
+    const apiKey = 'AIzaSyC6xqAHYO7aUuvTUNjc2KLAHOcUseth9cY';
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&maxResults=5&type=video&videoDuration=medium&safeSearch=strict&key=${apiKey}`;
 
     try {
@@ -32,7 +33,7 @@ function Home() {
     }
   }
 
-  const handleIconClick = async (platform) => {
+  const handleIconHover = async (platform) => {
     setSelectedResult(platform);
     if (platform === "Reddit") {
       const reddit = await fetchRedditTopResults(query);
@@ -43,12 +44,11 @@ function Home() {
     }
   };
 
- function fetchTranscript(query) {
+  function fetchTranscript(query) {
     try {
-      // Encode the query to safely include it in the URL.
-      const response =  fetch(`/api/transcript/${encodeURIComponent(query)}`);
-      const data =  response.json();
-      console.log(data.summary); // This contains the summary generated from the transcript.
+      const response = fetch(`/api/transcript/${encodeURIComponent(query)}`);
+      const data = response.json();
+      console.log(data.summary);
       return data.summary;
     } catch (error) {
       console.error("Error fetching transcript:", error);
@@ -58,64 +58,66 @@ function Home() {
 
   return (
     <>
-    <Searchbar setQuery={setQuery} />
-    <div className="main">
-    <div className="title">
-       <h1>Results for: {query}</h1>
-    </div>
-    
-    <div className="icon-select" style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-    <img
-    src= {`${process.env.PUBLIC_URL}/redditicon.png`}
-    alt="Reddit"
-    className="reddit-icon"
-    onClick={() => handleIconClick("Reddit")}
-    style={{ width: '100px', height: '100px', cursor: 'pointer', transition: 'transform 0.2s' }}
-    onMouseOver={(e) => {
-    e.currentTarget.style.opacity = 0.7;
-    e.currentTarget.style.transform = 'scale(1.1)';
-    }}
-    onMouseOut={(e) => {
-    e.currentTarget.style.opacity = 1;
-    e.currentTarget.style.transform = 'scale(1)';
-    }}
-    />
-    <img
-    src={`${process.env.PUBLIC_URL}/youtubeicon.png`}
-    alt="YouTube"
-    className="youtube-icon"
-    onClick={() => handleIconClick("YouTube")}
-    style={{ width: '100px', height: '100px', cursor: 'pointer', transition: 'transform 0.2s' }}
-    onMouseOver={(e) => {
-    e.currentTarget.style.opacity = 0.7;
-    e.currentTarget.style.transform = 'scale(1.1)';
-    }}
-    onMouseOut={(e) => {
-    e.currentTarget.style.opacity = 1;
-    e.currentTarget.style.transform = 'scale(1)';
-    }}
-    />
-    </div>
+      <Searchbar setQuery={setQuery} />
+      <div className="main">
+        <div className="title">
+          <h1>Results for: {query}</h1>
+        </div>
 
-    <div>
-    {selectedResult && (
-    <h2 className="title">{selectedResult} Results:</h2>
-    )}
+        <div className="icon-select" style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+          <img
+            src={`${process.env.PUBLIC_URL}/redditicon.png`}
+            alt="Reddit"
+            className="reddit-icon"
+            onMouseOver={() => handleIconHover("Reddit")}
+            style={{ width: '100px', height: '100px', cursor: 'pointer', transition: 'transform 0.2s' }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = 0.7;
+              e.currentTarget.style.transform = 'scale(1.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = 1;
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/youtubeicon.png`}
+            alt="YouTube"
+            className="youtube-icon"
+            onMouseOver={() => handleIconHover("YouTube")}
+            style={{ width: '100px', height: '100px', cursor: 'pointer', transition: 'transform 0.2s' }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = 0.7;
+              e.currentTarget.style.transform = 'scale(1.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = 1;
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          />
+        </div>
 
-    <ul>
-    {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
-    <li key={index}>{result}</li>
-    ))}
+        <div>
+          {selectedResult && (
+            <h2 className="title">{selectedResult} Results:</h2>
+          )}
 
-    <div>
-      <h2 className="title">Transcript Summary:</h2>
-      <p>{fetchTranscript(query)}</p>
-    </div>
-    </ul>
-    </div>
-    </div>
+          <ul>
+            {(selectedResult === "Reddit" ? redditResults : youtubeResults).map((result, index) => (
+              <li key={index}>{result}</li>
+            ))}
+
+            <div>
+              <h2 className="title">Transcript Summary:</h2>
+              <p>{fetchTranscript(query)}</p>
+            </div>
+          </ul>
+        </div>
+      </div>
     </>
   );
 }
 
-export default Home
+export default Home;
+
+
